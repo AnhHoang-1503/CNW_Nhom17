@@ -44,7 +44,7 @@ const search = ref("");
                     :class="routeName == 'mycourse' ? 'link_active' : ''"
                     >khoá học của tôi</RouterLink
                 >
-                <RouterLink to="/profile" style="width: 45px">hồ sơ</RouterLink>
+                <!-- <RouterLink to="/profile" style="width: 45px">hồ sơ</RouterLink> -->
             </div>
         </div>
     </div>
