@@ -14,7 +14,6 @@ const cardBox = ref(null);
 
 onMounted(async () => {
     await courseDetailStore.getCourse(BigInt(route.params.id));
-    console.log(courseDetailStore.course);
 });
 
 function flipCard() {

@@ -28,7 +28,6 @@ function nextCard() {
         currentCardIndex.value = 0;
     }
     getMeaningList();
-    console.log(currentCardIndex.value);
 }
 
 function previousCard() {
