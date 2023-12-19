@@ -14,8 +14,24 @@ const cardBox = ref(null);
 
 onMounted(async () => {
     await courseDetailStore.getCourse(BigInt(route.params.id));
-    console.log(courseDetailStore.course);
 });
+
+function flipCard() {
+    if (flip.value) {
+        cardBox.value.classList.add("flip-right");
+    } else {
+        cardBox.value.classList.add("flip-left");
+    }
+
+    setTimeout(() => {
+        flip.value = !flip.value;
+    }, 200);
+
+    setTimeout(() => {
+        cardBox.value.classList.remove("flip-right");
+        cardBox.value.classList.remove("flip-left");
+    }, 400);
+}
 
 function flipCard() {
     if (flip.value) {
