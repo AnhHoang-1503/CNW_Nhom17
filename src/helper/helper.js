@@ -164,5 +164,7 @@ const vietnamese_text = [
     "nói",
     "đọc",
     "viết",
-    "mua"
+    "mua",
+    "bán",
+    "chạy"
 ];
