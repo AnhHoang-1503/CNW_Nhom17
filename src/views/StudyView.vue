@@ -33,23 +33,6 @@ function flipCard() {
     }, 400);
 }
 
-function flipCard() {
-    if (flip.value) {
-        cardBox.value.classList.add("flip-right");
-    } else {
-        cardBox.value.classList.add("flip-left");
-    }
-
-    setTimeout(() => {
-        flip.value = !flip.value;
-    }, 200);
-
-    setTimeout(() => {
-        cardBox.value.classList.remove("flip-right");
-        cardBox.value.classList.remove("flip-left");
-    }, 400);
-}
-
 function nextCard() {
     flip.value = false;
     if (currentCardIndex.value < courseDetailStore.course.cards.length - 1) {
