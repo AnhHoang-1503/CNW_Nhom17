@@ -47,4 +47,19 @@ const router = createRouter({
     ],
 });
 
+router.beforeEach((to, from, next) => {
+    const titleObject = {
+        home: "Home",
+        courses: "Courses",
+        mycourses: "My Courses",
+        course: "Course",
+        mycourse: "My Course",
+        study: "Study",
+        practice: "Practice",
+    };
+
+    document.title = titleObject[to.name];
+    next();
+});
+
 export default router;
