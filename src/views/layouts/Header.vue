@@ -22,7 +22,7 @@ const search = ref("");
                     <div class="header_search">
                         <Search v-model:search="search" :expand="true" />
                     </div>
-                    <RouterLink to="/profile">
+                    <RouterLink to="/mycourses">
                         <img
                             class="header_avatar"
                             src="@/assets/avatar/default_avatar.png"
