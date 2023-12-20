@@ -37,6 +37,7 @@ function handleUploadImg(event) {
     if (file && file.type.startsWith("image/")) {
         const reader = new FileReader();
         reader.onload = (e) => {
+            courseDetailStore.course.course.img = e.target.result;
             img.value.style.backgroundImage = `url(${e.target.result})`;
         };
         reader.readAsDataURL(file);
@@ -59,6 +60,15 @@ async function accept() {
     }
     showWarning.value = false;
     isLoading.value = false;
+}
+
+async function updateCourse() {
+    await homeStore.updateCourse(
+        courseDetailStore.course.course.id,
+        courseDetailStore.course.course.name,
+        courseDetailStore.course.course.description,
+        courseDetailStore.course.course.img
+    );
 }
 </script>
 
@@ -142,6 +152,11 @@ async function accept() {
                             Thêm thẻ mới
                         </button>
                     </div>
+                    <div class="add_card" v-if="courseDetailStore.isOwner">
+                        <button class="add_button" @click="updateCourse()">
+                            Cập nhật khoá học
+                        </button>
+                    </div>
                 </div>
             </div>
             <div class="course">
@@ -165,7 +180,9 @@ async function accept() {
                         <input
                             id="description"
                             class="input"
-                            :value="courseDetailStore.course.course.description"
+                            v-model="
+                                courseDetailStore.course.course.description
+                            "
                             @input="
                                 courseDetailStore.course.course.description =
                                     $event.target.value
@@ -178,7 +195,7 @@ async function accept() {
                         <input
                             id="author"
                             class="input"
-                            :value="courseDetailStore.course.course.author"
+                            v-model="courseDetailStore.course.course.author"
                             disabled
                         />
                     </div>
@@ -359,6 +376,6 @@ async function accept() {
 
 .top_button {
     display: flex;
-    gap: 24px;
+    gap: 18px;
 }
 </style>

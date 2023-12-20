@@ -14,6 +14,8 @@ onMounted(async () => {
     } else {
         listCourses.value = homeStore.listCourses;
     }
+
+    console.log(listCourses.value);
 });
 
 watch(search, (value) => {

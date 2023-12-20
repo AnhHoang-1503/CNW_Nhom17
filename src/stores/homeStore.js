@@ -90,6 +90,12 @@ export const useHomeStore = defineStore("home", () => {
         }
     }
 
+    async function upateCourse(id, name, description, img) {
+        try {
+            await CourseAbi.updateCourse(id, name, description, img);
+        } catch (error) {}
+    }
+
     return {
         listCourses,
         getAllCourses,

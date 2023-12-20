@@ -91,7 +91,9 @@ async function save() {
                             ref="imgElement"
                             class="input_file img"
                             :style="{
-                                backgroundImage: defaultImg,
+                                backgroundImage: img
+                                    ? `url(${img})`
+                                    : defaultImg,
                             }"
                             @click="imgInput.click()"
                         >

@@ -94,6 +94,7 @@ export default {
      * @param {string} id Id khóa học
      * @param {string} name Tên khóa học
      * @param {string} description Nội dung khóa học
+     * @param {string} img Hình ảnh
      */
     updateCourse: async (id, name, description, img) =>
         await execute(updateCourse, [id, name, description, img]),

@@ -28,20 +28,8 @@ export async function connect() {
 
 export async function execute(fn, params = []) {
     try {
-        if (
-            params &&
-            params[params.length - 1] &&
-            params[params.length - 1].length > 100000
-        ) {
-            try {
-                const res = await axios.post("http://localhost:3000/upload", {
-                    data: { img: params[params.length - 1] },
-                });
-                params[params.length - 1] = res.data;
-            } catch (error) {
-                console.log("Can't upload image", error);
-                return;
-            }
+        if (params) {
+            await handleImg(params[params.length - 1]);
         }
         await connect();
     } catch (error) {
@@ -69,3 +57,17 @@ export default {
     connect,
     execute,
 };
+
+async function handleImg(params) {
+    if (params && (params.length > 10000 || params.startsWith("data:image"))) {
+        try {
+            const res = await axios.post("http://localhost:3000/upload", {
+                data: { img: params },
+            });
+            params = res.data;
+        } catch (error) {
+            console.log("Can't upload image", error);
+            return;
+        }
+    }
+}

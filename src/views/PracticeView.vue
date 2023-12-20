@@ -57,8 +57,14 @@ function clickOption(option, event) {
     if (
         option == courseDetailStore.course.cards[currentCardIndex.value].meaning
     ) {
+        if (event.target.classList.contains("correct")) {
+            return;
+        }
         event.target.classList.add("correct");
     } else {
+        if (event.target.classList.contains("wrong")) {
+            return;
+        }
         event.target.classList.add("wrong");
         correctAnswer.value[0].classList.add("correct");
     }
